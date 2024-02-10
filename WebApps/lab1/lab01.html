@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<h1>Лабораторная работа №1</h1>
+<a href="https://www.belstu.by">БГТУ</a>
+<button type="button" onclick="getInfo()">Информация о браузере</button>
+<p id="info"></p>
+<script>
+const getInfo=()=>{
+	console.log("Hello World");
+        const info=document.getElementById('info');
+	for (var property in navigator){
+		info.innerHTML+=property+": "+navigator[property]+"<br/>";
+	}
+}
+</script>
+</html>

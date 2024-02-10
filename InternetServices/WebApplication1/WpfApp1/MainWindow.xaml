@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#608DD2">
+        <TextBlock Foreground="white" FontSize="36px" Margin="34,48,-34,-48" FontFamily="Montserrat Alternates">Enter value of x</TextBlock>
+        <TextBlock Foreground="white" FontSize="36px" Margin="34,152,-34,-152" FontFamily="Montserrat Alternates">Enter value of y</TextBlock>
+        <TextBox x:Name="textboxY" Width="400px" Margin="363,140,37,215" FontFamily="Montserrat Alternates" FontSize="36px" Foreground="#150069"/>
+        <TextBox x:Name="textboxX" Width="400px" Margin="363,37,37,323" FontFamily="Montserrat Alternates" FontSize="36px" Foreground="#150069"/>
+        <Button Margin="282,359,282,20" FontFamily="Montserrat Alternates" Background="#3EB489" Foreground="#150069" FontSize="22px" Click="Button_Click">Post Parameters</Button>
+        <TextBlock Foreground="white" FontSize="36px" Margin="34,252,-34,80" FontFamily="Montserrat Alternates"><Run Text="Result"/></TextBlock>
+        <TextBox x:Name="textboxRes" Width="400px" Margin="363,241,37,118" FontFamily="Montserrat Alternates" FontSize="36px" Foreground="#150069" IsReadOnly="True"/>
+    </Grid>
+</Window>
