@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Form</title>
+</head>
+<body>
+     <label>
+        X
+     <input type="number" id="xNum"/>
+     </label>
+     <label>
+        Y
+     <input type="number" id="yNum"/>
+     </label>
+     <button onclick="send()">SEND</button>
+     <div id="resp"></div>
+    <script>
+        send = () => {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:43714/task5', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function(){
+                if (xhr.status !== 200) {
+                    alert(xhr.status + ": " + xhr.statusText)
+                }
+                else {
+                    var respBlock = document.getElementById("resp");
+                    respBlock.innerHTML = xhr.responseText;
+                }
+            }
+            xhr.send("x=" + document.getElementById("xNum").value + "&y=" + document.getElementById("yNum").value);
+        }
+    </script>
+</body>
+</html>

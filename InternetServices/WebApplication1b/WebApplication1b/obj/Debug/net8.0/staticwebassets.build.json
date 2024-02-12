@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "HJ8Kv6kzLGr7F9C+vp/JZpRpsiwD3WFVAQMspvPE1Do=",
+  "Source": "WebApplication1b",
+  "BasePath": "_content/WebApplication1b",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApplication1b\\wwwroot",
+      "Source": "WebApplication1b",
+      "ContentRoot": "D:\\Sem32\\InternetServices\\WebApplication1b\\WebApplication1b\\wwwroot\\",
+      "BasePath": "_content/WebApplication1b",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Sem32\\InternetServices\\WebApplication1b\\WebApplication1b\\wwwroot\\htmlpage.html",
+      "SourceId": "WebApplication1b",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sem32\\InternetServices\\WebApplication1b\\WebApplication1b\\wwwroot\\",
+      "BasePath": "_content/WebApplication1b",
+      "RelativePath": "htmlpage.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\htmlpage.html"
+    }
+  ]
+}

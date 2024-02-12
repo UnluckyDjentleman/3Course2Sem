@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="row-cols-6" style="margin: 2.5%">
+        <button type="button" class="btn btn-success" onclick="start()">Start</button>
+        <button type="button" class="btn btn-danger" onclick="stop()">Stop</button>
+    </div>
+    <textarea class="mt-4 w-50 p-5 fs-5" id="ta" rows="10" cols="2" style="margin: 2.5%" readonly></textarea>
+    <script>
+        let ta = document.getElementById("ta");
+        let interval = null;
+        let k = 0;
+        let ws;
+        start = () => {
+            ws = new WebSocket(`ws://${location.hostname}:${location.port}/tws`);
+            ws.onopen = function () {
+                ta.innerHTML += "Connection was opened\n";
+                ws.send("Connection was opened");
+            }
+            ws.onerror = function (e) {
+                ta.innerHTML += e.message;
+            }
+            ws.onclose = function () {
+                ta.innerHTML += "Connection was closed\n";
+            }
+            ws.onmessage = function (msg) {
+                ta.innerHTML += msg.data;
+            }
+            interval = setInterval(() => {
+                ws.send(`Hello From Client ${k++}`);
+            }, 2000);
+        }
+        stop = () => {
+            clearInterval(interval);
+            ws.close();
+        }
+    </script>
+</body>
+</html>

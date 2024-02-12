@@ -27,11 +27,11 @@ namespace WpfApp1
             List<KeyValuePair<string,string>>param = new List<KeyValuePair<string, string>>();
             param.Add(new KeyValuePair<string, string>("x",textboxX.Text));
             param.Add(new KeyValuePair<string, string>("y", textboxY.Text));
-            var parameters = new FormUrlEncodedContent(param);
-            HttpClient client = new HttpClient();
-            var res = await client.PostAsync("http://localhost:43714/task4", parameters);
             try
             {
+                var parameters = new FormUrlEncodedContent(param);
+                HttpClient client = new HttpClient();
+                var res = await client.PostAsync("http://localhost:43714/task4", parameters);
                 if (res.IsSuccessStatusCode)
                 {
                     textboxRes.Text = await res.Content.ReadAsStringAsync();
