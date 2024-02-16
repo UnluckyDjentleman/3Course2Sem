@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Sequelizer-13</title>
+        <link href="bootstrap.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container d-flex align-items-start justify-content-between">
+            <div class="row pb-2" style="width: 40%;">
+                <h1 class="mt-4 ms-4">Lab13</h1>
+                <button type="button" class="btn btn-success mt-3" id="get">GET</button>
+                <button type="button" class="btn btn-primary mt-2" id="post">POST</button>
+                <button type="button" class="btn btn-warning mt-2" id="put">PUT</button>
+                <button type="button" class="btn btn-danger mt-2 mb-2" id="delete">DELETE</button>
+    
+                <div class="form-group mt-4">
+                    <label for="teacher">Teacher</label>
+                    <input class="form-control" type="text" name="teacher" id="input_teacher">
+                </div>
+    
+                <div class="form-group mt-2">
+                    <label for="teacher_name">Teacher's Name</label>
+                    <input class="form-control" type="text" name="teacher_name" id="input_teacher_name">
+                </div>
+    
+                <div class="form-group mt-2">
+                    <label for="pulpit">Pulpit</label>
+                    <input class="form-control" type="text" name="pulpit" id="input_pulpit">
+                </div>
+            </div>
+    
+            <div id="result" class="mb-3 me-5" style="width: 50%; margin-top: 7%;"></div>
+        </div>
+        <script>
+            const baseUrl='/api/teachers/';
+            const result=document.getElementById("result");
+
+            $("#get").click(function get(){
+                fetch(baseUrl).then(resp=>resp.json())
+                .then(respText=>{
+                    result.innerHTML='<pre style="white-space: pre-wrap">'+JSON.stringify(respText,null,2)+'</pre>';
+                }).catch(e=>{
+                    result.innerHTML=e.message;
+                })
+            });
+
+            $("#post").click(function post(){
+                const data={
+                    TEACHER: $("#input_teacher").val(),
+                    TEACHER_NAME: $("#input_teacher_name").val(),
+                    PULPIT: $("#input_pulpit").val()
+                }
+                if(data.PULPIT==''||data.TEACHER_NAME==''||data.TEACHER==''){
+                    result.innerHTML='Please, fill all fields!'
+                }
+                fetch(baseUrl,{
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'content-type': 'application/json' }
+                }).then(resp=>{
+                    resp.json()
+                }).then(respText=>{
+                    result.innerHTML='<pre style="white-space: pre-wrap">'+JSON.stringify(respText,null,2)+'</pre>'
+                }).catch(e=>{
+                    result.innerHTML=e.message;
+                })
+            });
+
+            $("#put").click(function post(){
+                const data={
+                    TEACHER: $("#input_teacher").val(),
+                    TEACHER_NAME: $("#input_teacher_name").val(),
+                    PULPIT: $("#input_pulpit").val()
+                }
+                if(data.PULPIT==''||data.TEACHER_NAME==''||data.TEACHER==''){
+                    result.innerHTML='Please, fill all fields!'
+                }
+                fetch(baseUrl,{
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers:{'content-type':'application/json'}
+                }).then(resp=>resp.json()).then(respText=>{
+                    result.innerHTML='<pre style="white-space: pre-wrap">'+JSON.stringify(respText,null,2)+'</pre>'
+                }).catch(e=>{
+                    result.innerHTML=e.message;
+                })
+            });
+
+            $("#delete").click(function post(){
+                const xyz=$("#input_teacher").val();
+                console.log(xyz);
+                if(xyz==''){
+                    result.innerHTML='Please, fill all fields!'
+                }
+                fetch(baseUrl+xyz,{
+                    method:'DELETE',
+                    headers:{'content-type':'application/json'}
+                }).then(resp=>resp.json()).then(
+                    respText=>{
+                        result.innerHTML='<pre style="white-space: pre-wrap">'+JSON.stringify(respText,null,2)+'</pre>'
+                    }
+                ).catch(e=>{
+                    result.innerHTML=e.message;
+                })
+            })
+        </script>
+    </body>
+</html>

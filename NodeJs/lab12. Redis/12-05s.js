@@ -8,6 +8,6 @@ client.on('ready', ()=>console.log("Subscriber is ready for work!"));
 client.on('end', ()=>"Client disconnected");
 
 client.connect();
-client.subscribe('*',(message, channel)=>{
+client.subscribe('MyChannel',(message, channel)=>{
     console.log(`Received message from channel ${channel}: ${message}`);
 });
