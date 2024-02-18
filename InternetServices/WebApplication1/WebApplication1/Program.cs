@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.MapGet("/", () => "Hello world");
 
 //1
 app.MapGet("/gvs", (string x, string y) =>$"GET-Http-GVS: ParmA={x}, ParmB={y}");
