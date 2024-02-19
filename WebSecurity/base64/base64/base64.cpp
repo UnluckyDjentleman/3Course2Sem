@@ -44,7 +44,7 @@ double HartleyEntropy(string str) {
 }
 
 double GetRedunancy(double x, double y) {
-	return (x - y) / x;
+	return x - y/x;
 }
 
 int CodeAt(char c) {
@@ -65,6 +65,7 @@ string TextToBase64(string str) {
 	}
 	mod = 0;
 	while(mod<str.size()) {
+		//MIME spec
 		if (mod > 0 && (mod / 3 * 4) % 76 == 0) {
 			b += '\r\n';
 		}

@@ -12,5 +12,8 @@ int main() {
 	cout << "===========================XOR===========================" << endl;
 	string s = Xor("Vladislav", "Goroshchenja");
 	cout << s << endl;
-	cout << "XOR to base64: " << TextToBase64(s);
+	string aa = TextToBase64("Vladislav");
+	string bb = TextToBase64("Goroshchenja");
+	cout << "XOR to base64: " << TextToBase64(s)<<endl;
+	cout << "XOR to base64 xd:" << TextToBase64(Xor(aa, bb));
 }
