@@ -1,2 +1,8 @@
-﻿  main.cpp
+﻿  base64.cpp
+D:\Sem32\WebSecurity\base64\base64\base64.cpp(70,9): warning C4305: 'argument': truncation from 'int' to '_Elem'
+D:\Sem32\WebSecurity\base64\base64\base64.cpp(70,9): warning C4305:         with
+D:\Sem32\WebSecurity\base64\base64\base64.cpp(70,9): warning C4305:         [
+D:\Sem32\WebSecurity\base64\base64\base64.cpp(70,9): warning C4305:             _Elem=char
+D:\Sem32\WebSecurity\base64\base64\base64.cpp(70,9): warning C4305:         ]
+D:\Sem32\WebSecurity\base64\base64\base64.cpp(70,9): warning C4309: 'argument': truncation of constant value
   base64.vcxproj -> D:\Sem32\WebSecurity\base64\x64\Debug\base64.exe
