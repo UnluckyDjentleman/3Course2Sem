@@ -13,6 +13,7 @@ npx prisma init
 ```
 
 After that files __.env__ and __schema.prisma__ will be generated;
+
 2. ## Connection
 Then change __"DATABASE_URL"__ in __.env__ file. Also in __schema.prisma__ change the field __provider__ to the database you use. 
 
