@@ -72,7 +72,7 @@ int EuclidReference(int a, int N) {
 
 std::string CaesarSchifer(std::string text, int a, int b, std::string alph) {
 	std::string out;
-	clock_t time;
+	std::clock_t time= std::clock();
 	//This solution is for dumbs like me who never looks for easier solutions
 	/*for (int i = 0; i < alph.size(); i++) {
 		for (int j = 0; j < text.size(); j++) {
@@ -98,12 +98,15 @@ std::string CaesarSchifer(std::string text, int a, int b, std::string alph) {
 			out += *c;
 		}
 	}
+	std::clock_t duration = (std::clock() - time);
+	std::cout << "Time of Caesar encryption: " << duration << " ms";
 	return out;
 }
 
 std::string Vigenere(std::string text, std::string alphabet, std::string baseString) {
 	int key_length = 0;
 	std::string xd;
+	std::clock_t time = std::clock();
 	for (auto c = text.begin(); c != text.end(); c++) {
 		if (alphabet.find(*c) != -1) {
 			int h = (alphabet.find(*c) + alphabet.find(baseString[key_length])) % alphabet.size();
@@ -117,12 +120,15 @@ std::string Vigenere(std::string text, std::string alphabet, std::string baseStr
 			xd += *c;
 		}
 	}
+	std::clock_t duration = (std::clock() - time);
+	std::cout <<"Time of Vigenere encryption: " << duration<<" ms";
 	return xd;
 }
 
 std::string VigenereDeschifer(std::string text, std::string alphabet, std::string baseString) {
 	std::string xd;
 	int key_length = 0;
+	std::clock_t time = std::clock();
 	for (auto c = text.begin(); c != text.end(); c++) {
 		if (alphabet.find(*c) != -1) {
 			int first = (alphabet.find(*c));
@@ -138,12 +144,14 @@ std::string VigenereDeschifer(std::string text, std::string alphabet, std::strin
 			xd += *c;
 		}
 	}
+	std::clock_t duration = (std::clock() - time);
+	std::cout << "Time of Vigenere decryption: " << duration << " ms" << std::endl;
 	return xd;
 }
 
 std::string CaesarDeschifer(std::string text, int a, int b, std::string alph) {
 	std::string out;
-	clock_t time;
+	std::clock_t time=std::clock();
 	for (auto c = text.begin(); c != text.end(); c++) {
 		if (alph.find(*c) != -1) {
 			int u = EuclidReference(a, alph.size());
@@ -155,6 +163,8 @@ std::string CaesarDeschifer(std::string text, int a, int b, std::string alph) {
 			out += *c;
 		}
 	}
+	std::clock_t duration = (std::clock() - time);
+	std::cout << "Time of Caesar decryption: " << duration << " ms"<<std::endl;
 	return out;
 }
 

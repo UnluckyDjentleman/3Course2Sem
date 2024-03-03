@@ -6,10 +6,16 @@ int main() {
 	std::string str = ReadTextFromFile("original.txt");
 	std::cout << "=========================original.txt=========================" << std::endl;
 	OutputAppearances(SymbolDictionary(str, alphabet), str);
-	WriteOnFile("encryptÑaesar.txt", CaesarSchifer(str, 7, 10, alphabet));
+	std::cout << std::endl;
+	std::string caesar = CaesarSchifer(str, 7, 10, alphabet);
+	std::cout << std::endl;
+	WriteOnFile("encryptÑaesar.txt", caesar);
 	std::cout << "=========================encryptCaesar.txt=========================" << std::endl;
 	OutputAppearances(SymbolDictionary(ReadTextFromFile("encryptÑaesar.txt"), alphabet), ReadTextFromFile("encryptÑaesar.txt"));
-	WriteOnFile("encryptVigenere.txt", Vigenere(str, alphabet, "ãîðîùåíÿ"));
+	std::cout << std::endl;
+	std::string vigener = Vigenere(str, alphabet, "ãîðîùåíÿ");
+	std::cout << std::endl;
+	WriteOnFile("encryptVigenere.txt", vigener);
 	std::cout << "=========================encryptVigenere.txt=========================" << std::endl;
 	OutputAppearances(SymbolDictionary(ReadTextFromFile("encryptVigenere.txt"), alphabet), ReadTextFromFile("encryptVigenere.txt"));
 	
