@@ -29,14 +29,15 @@ as
 declare @main hierarchyid
 begin
 select @main=node from roles where roleName='%Manager%'
-insert into roles(roleId,roleName, node) values (NEWID(),'xd man', @main.GetDescendant(@parent, null))
+insert into roles(roleId,roleName, node) values (NEWID(),'Hotel Agent', @main.GetDescendant(@parent, null))
 end;
 
 declare @parent hierarchyid;
 select @parent=node from roles where roleName='Tour Operator 1'
 exec AddChild @parent
 
-update roles set node=hierarchyid::Parse('/2/') where roleName='Tour Manager 2'
+update roles set node=hierarchyid::Parse('/2/') where roleName like '%Tour Operator%'
+update roles set node=hierarchyid::Parse('/3/') where roleName like '%Visa Agent%'
 
 --select into
 create or alter procedure IntoTheOther

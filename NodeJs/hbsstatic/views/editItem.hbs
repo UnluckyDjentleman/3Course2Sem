@@ -13,7 +13,7 @@
     </div>
     <form style="margin-top:20px;"  class="form" data-key="{{thisContact.id}}">
         <input type="input" class="form-control" placeholder="Enter name" id="name" name="name" value="{{thisContact.name}}">
-        <input type="input" class="form-control" id="phone" name="phone" placeholder="Enter telephone" value="{{thisContact.phone}}">
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter telephone" value="{{thisContact.phone}}">
         <div style="display: flex; justify-content: center;">
             <button style="width:20%; margin:1.5%" class="btn btn-warning" onclick="updateContact()">Update</button>
             <button style="width:20%; margin:1.5%" class="btn btn-danger" onclick="deleteContact()">Delete</button>

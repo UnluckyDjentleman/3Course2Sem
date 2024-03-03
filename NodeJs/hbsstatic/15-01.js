@@ -7,17 +7,21 @@ const hbs=require('express-handlebars').create({
     extname:'.hbs',
     helpers:{
         dismiss: ()=>{
-            return '<button type="button" class="btn btn-link" style="width:20%; margin:1.5%" onclick="window.location.href=\'http://localhost:3000/\'">Deny</button>'
+            return '<button type="button" class="btn btn-link" style="width:20%; margin:1.5%" onclick="window.location.href=\'/\'">Deny</button>'
         }
     }
 });
 const app=express();
+const router=express.Router();
 const resp=JSON.parse(fs.readFileSync("contacts.json"));
 console.log(resp);
 
 app.engine('hbs', hbs.engine);
 app.use(express.static('static'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 app.use(express.json());
 app.set('view engine','.hbs');
 
@@ -30,19 +34,19 @@ app.get('/add',(request,response)=>{
 })
 
 app.get('/update/:id', (request, response)=>{
-    getForUpdate(request, response)
+    getForUpdate(request, response);
 })
 
-app.post('/add', (request, response)=>{
-    addContactMethod(request.body).then(response.redirect('/'));
+app.post('/add', async (request, response)=>{
+    await addContactMethod(request.body).then(result=>response.json(result));
 })
 
-app.post('/update/:id', (request,response)=>{
-    updateContactMethod(request).then(response.redirect('/'));
+app.post('/update/:id', async (request, response)=>{
+    await updateContactMethod(request).then(result=>response.json(result));
 })
 
-app.post('/delete/:id', (request,response)=>{
-    deleteContactMethod(request).then(response.redirect('/'));
+app.post('/delete/:id', async (request, response)=>{
+    await deleteContactMethod(request).then(result=>response.json(result));
 })
 
 app.listen(port, () => {

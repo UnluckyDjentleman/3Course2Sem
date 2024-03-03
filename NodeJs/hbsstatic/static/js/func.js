@@ -5,26 +5,28 @@ addContact=()=>{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({name: nameContact, phone: phoneContact})
-    }).then(()=>window.location.href='http://localhost:3000/')
+    }).then(response=>response.json()).then(()=>window.location.href='/')
 }
 
-updateContact=()=>{
+updateContact=async ()=>{
     const id = document.querySelector('.form').getAttribute('data-key');
     const nameContact=document.getElementsByName("name")[0].value;
     const phoneContact=document.getElementsByName("phone")[0].value;
-    fetch(`/update/${id}`,{
+    await fetch(`/update/${id}`,{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: nameContact, phone: phoneContact})
-    }).then(()=>window.location.href='http://localhost:3000/')
+        body: JSON.stringify({name: nameContact, phone: phoneContact}),
+    });
+    window.location.href='/'
 }
 
-deleteContact=()=>{
+deleteContact=async ()=>{
     const id = document.querySelector('.form').getAttribute('data-key');
-    fetch(`/delete/${id}`,{
+    await fetch(`/delete/${id}`,{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
-    }).then(()=>window.location.href='http://localhost:3000/')
+    });
+    window.location.href='/'
 }
 
 checkTelephone=(number)=>{

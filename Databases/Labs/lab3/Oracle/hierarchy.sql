@@ -9,14 +9,14 @@ insert into roles(roleName) values('Operator 1');
 insert into roles(roleName) values('Operator 2');
 insert into roles(roleName) values('Visa Agent');
 
-create or replace type ROLE_AS_Type1 as OBJECT(
+create or replace type ROLE_AS_Type2 as OBJECT(
 roleId number,
 roleName varchar2(20),
 status number,
 node_level number
 );
 
-create type role_as_type_table1 as table of ROLE_AS_Type1;
+create type role_as_type_table2 as table of ROLE_AS_Type2;
 
 create or replace procedure SelectByNode (node number) is
 cur sys_refcursor;
@@ -35,7 +35,7 @@ CLOSE cur;
 end;
 
 begin
-SelectByNode(2);
+SelectByNode(1);
 end;
 
 create or replace procedure AddToNode (noden number) is

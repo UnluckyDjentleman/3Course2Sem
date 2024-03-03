@@ -1,0 +1,12 @@
+﻿  SchiferAlg.cpp
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(94,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(75,10): warning C4101: 'time': unreferenced local variable
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(109,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(128,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(129,15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(130,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(149,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(150,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(151,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\lab4\lab4\SchiferAlg.cpp(146,10): warning C4101: 'time': unreferenced local variable
+  lab4.vcxproj -> D:\Sem32\WebSecurity\lab4\x64\Debug\lab4.exe
