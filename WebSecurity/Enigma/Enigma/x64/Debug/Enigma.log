@@ -1,0 +1,8 @@
+﻿  Enigma.cpp
+D:\Sem32\WebSecurity\Enigma\Enigma\Enigma.cpp(100,43): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\Enigma\Enigma\Enigma.cpp(105,45): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\Enigma\Enigma\Enigma.cpp(110,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\Enigma\Enigma\Enigma.cpp(141,43): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\Enigma\Enigma\Enigma.cpp(146,45): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Sem32\WebSecurity\Enigma\Enigma\Enigma.cpp(151,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Enigma.vcxproj -> D:\Sem32\WebSecurity\Enigma\x64\Debug\Enigma.exe
