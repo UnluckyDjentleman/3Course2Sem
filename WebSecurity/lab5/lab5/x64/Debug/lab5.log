@@ -1,0 +1,53 @@
+﻿  Realization.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(143,47): warning C4267: 'initializing': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(143,47): warning C4267:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(143,47): warning C4267:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(143,47): warning C4267:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(143,47): warning C4267:         ]
+  (compiling source file 'Realization.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(143,47):
+  the template instantiation context (the oldest one first) is
+  	D:\Sem32\WebSecurity\lab5\lab5\Realization.cpp(161,34):
+  	see reference to function template instantiation 'std::tuple<int,int>::tuple<int,unsigned __int64,0>(std::tuple<int,unsigned __int64> &&) noexcept' being compiled
+  		D:\Sem32\WebSecurity\lab5\lab5\Realization.cpp(161,18):
+  		see the first reference to 'std::tuple<int,int>::tuple' in 'Swaps::indexColOrRow'
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(388,16):
+  	see reference to function template instantiation 'std::tuple<int,int>::tuple<std::_Unpack_tuple_t,std::tuple<int,unsigned __int64>,0>(_Tag,_Tpl &&)' being compiled
+          with
+          [
+              _Tag=std::_Unpack_tuple_t,
+              _Tpl=std::tuple<int,unsigned __int64>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(322,16):
+  	see reference to function template instantiation 'std::tuple<int,int>::tuple<std::_Unpack_tuple_t,_Ty,0,1,0>(_Tag,_Tpl &&,std::integer_sequence<size_t,0,1>)' being compiled
+          with
+          [
+              _Ty=std::tuple<int,unsigned __int64>,
+              _Tag=std::_Unpack_tuple_t,
+              _Tpl=std::tuple<int,unsigned __int64>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(1002,12):
+  	see reference to function template instantiation 'std::tuple<int,int>::tuple<std::_Exact_args_t,int,unsigned __int64,0>(_Tag,_This2 &&,unsigned __int64 &&)' being compiled
+          with
+          [
+              _Tag=std::_Exact_args_t,
+              _This2=int
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(315,18):
+  	see reference to function template instantiation 'std::tuple<int>::tuple<std::_Exact_args_t,_Ty,,0>(_Tag,_This2 &&)' being compiled
+          with
+          [
+              _Ty=unsigned __int64,
+              _Tag=std::_Exact_args_t,
+              _This2=unsigned __int64
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\tuple(315,102):
+  	see reference to function template instantiation 'std::_Tuple_val<_This>::_Tuple_val<_Ty>(_Other &&)' being compiled
+          with
+          [
+              _This=int,
+              _Ty=unsigned __int64,
+              _Other=unsigned __int64
+          ]
+  
+  lab5.vcxproj -> D:\Sem32\WebSecurity\lab5\x64\Debug\lab5.exe
