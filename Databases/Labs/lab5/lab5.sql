@@ -1,3 +1,21 @@
+insert into ORDERS values(NEWID(), '014B5452-6C8B-4EE9-8426-4ACD5404C881', '5E8A194B-22A5-4278-9037-8124985BD45B', 2, 1, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '014B5452-6C8B-4EE9-8426-4ACD5404C881', '4C518FA8-3247-427B-8AEC-6156B7DBA27F', 3, 2, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '41004A10-7499-4058-A59B-7796C538FA5A', 'D25E0C69-6431-46F3-81BD-5D47960CA497', 2, 1, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '41004A10-7499-4058-A59B-7796C538FA5A', '8D11AF6D-877B-4B83-9435-9167D06C2904', 3, 2, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), 'E688E17E-798B-4F18-B988-C8208807CC5F', 'A321FB33-036F-4606-B141-4911CB78CD53', 2, 1, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '41004A10-7499-4058-A59B-7796C538FA5A', 'D4EEE7FC-B85E-484E-ABB9-F1FA0E973003', 3, 2, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '23960F99-62AE-48D7-871F-3AADABD468DB', 'A321FB33-036F-4606-B141-4911CB78CD53', 2, 1, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), 'D3573027-4AB4-404E-BDC5-5C63D20E61A5', '1E87A378-19D5-4657-A239-A86BF80F8F6C', 3, 2, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), 'D3573027-4AB4-404E-BDC5-5C63D20E61A5', 'A321FB33-036F-4606-B141-4911CB78CD53', 2, 1, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '6DE25268-4EBF-4513-84F4-AADF357CDF57', 'D4EEE7FC-B85E-484E-ABB9-F1FA0E973003', 3, 2, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '9182DD4F-FAE8-498B-906C-BF92EE8E0834', 'A321FB33-036F-4606-B141-4911CB78CD53', 2, 1, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '9182DD4F-FAE8-498B-906C-BF92EE8E0834', '6D9E8070-4E76-4600-BA09-D3586746DF47', 3, 2, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '41004A10-7499-4058-A59B-7796C538FA5A', 'A321FB33-036F-4606-B141-4911CB78CD53', 2, 1, GETDATE(), RAND());
+insert into ORDERS values(NEWID(), '9182DD4F-FAE8-498B-906C-BF92EE8E0834', '359F924C-3EFB-4DDC-A1F9-9704DAA4A96E', 3, 2, GETDATE(), RAND());
+
+select * from users;
+select * from orders;
+select * from tours;
 --1.
 select year(DateStart) as year, 
 case when Month(DateStart) BETWEEN 1 AND 6 THEN 'H1'
@@ -40,7 +58,7 @@ FROM (
     FROM 
         orders
     WHERE 
-        DateStart BETWEEN '2020-01-01' AND '2024-01-01'
+        DateStart BETWEEN '2022-01-01' AND '2024-01-01'
 ) AS numbered_payments
 WHERE row_num BETWEEN 1 AND 20;
 
@@ -57,23 +75,31 @@ FROM (
 WHERE row_num = 1;
 
 --4
-SELECT 
-    USERS.userId,
-    COUNT(orders.userId) AS visits
-FROM 
-    USERS
-INNER JOIN 
-    orders
-    ON users.userId=orders.orderId
-inner join tours on tours.tourId=orders.tourId
-inner join countries on countries.countryId=tours.countryId
-GROUP BY 
-    USERS.userId,
-	COUNTRIES.countryId
-ORDER BY 
-    userId,
-    visits;
-
+select u.userId, top_6_countries.countryId, count(o.userId) as count_of_visits 
+from users u 
+join 
+	orders o 
+	on u.userId=o.userId 
+join 
+	tours t 
+	on o.tourId=t.tourId 
+join (
+	select top 6 countries.countryId, 
+	count(countries.countryId) as count_of_visits 
+	from orders 
+	join 
+		tours 
+	on orders.tourId=tours.tourId 
+	join 
+		countries on tours.countryId=countries.countryId 
+	group by countries.countryId
+) 
+	as top_6_countries 
+	on t.countryId=top_6_countries.countryId 
+group by 
+	u.userId, top_6_countries.countryId
+order by
+	u.userId, count_of_visits;
 --5
 select 
 TOURS.tourName,
