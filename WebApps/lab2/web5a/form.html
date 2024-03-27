@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lol</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form id="form">
+            <input type="number" name="x" placeholder="x" id="x">
+            <input type="number" name="y" placeholder="y" id="y">
+            <input type="number" name="z" readonly placeholder="z" id="z">
+            <input type="submit" class="btn btn-success" value="Send" id="btn">
+        </form>
+        <script>
+            var form=$("#form");
+            var x=$("#x")
+            var y=$("#y")
+            var z=$("#z")
+            form.submit(async event=>{
+                event.preventDefault();
+                const resp=await fetch('/',{
+                    method: "POST",
+                    headers:{
+                        'x-value-x':x.val(),
+                        'x-value-y':y.val()
+                    },
+                    body: `x=${x}&y=${y}`
+                })
+                const data=await resp.text();
+                z.val(data);
+            })
+        </script>
+    </body>
+</html>
