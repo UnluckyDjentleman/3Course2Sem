@@ -16,14 +16,22 @@
         </div>
         <div id="second" class="mb-3" style="border:1px solid">
             <form id="form2">
-                <input type="submit" class="btn btn-success" value="Send2" id="btn">
+                <input type="number" name="n" placeholder="n" id="n">
+                <input type="submit" class="btn btn-success" value="Send2" id="btn1">
             </form>
             <p id="json"></p>
         </div>
+        <div id="third" class="mb-3" style="border:1px solid">
+            <form id="form3">
+                <input type="number" name="x1" placeholder="x" id="x1">
+                <input type="number" name="y1" placeholder="y" id="y1">
+                <input type="number" name="z1" readonly placeholder="z" id="z1">
+                <input type="number" name="n1" placeholder="n" id="n1">
+                <input type="submit" class="btn btn-success" value="Send3" id="btn2">
+            </form>
+            <p id="json1"></p>
+        </div>
         <script>
-            var xhr=new XMLHttpRequest();
-            xhr.open('POST','/',false);
-            xhr.send();
             var form2=$("#form2");
             var jsonStatham=$("#json");
             var n=$("#n")
@@ -31,9 +39,82 @@
             var x=$("#x")
             var y=$("#y")
             var z=$("#z")
-            xhr.onload=function(){
-
+            var form3=$("#form3")
+            var x1=$("#x1")
+            var y1=$("#y1")
+            var z1=$("#z1")
+            var jsonStatham1=$("#json1");
+            var n1=$("#n1");
+            //form 1
+            form1.submit((event)=>{
+                event.preventDefault();
+                var xhr1=new XMLHttpRequest();
+                xhr1.open('POST','/first',true);
+                xhr1.setRequestHeader('x-value-x',x.val());
+                xhr1.setRequestHeader('x-value-y',y.val());
+                xhr1.send(`x=${x}&y=${y}`);
+                xhr1.onload=()=>{
+                if (xhr1.status === 200) {
+                    console.log('XHR Text Sum: '+xhr1.responseText);
+                    const data=xhr1.responseText;
+                    z.val(data);
+                }
+                else{
+                    alert(xhr1.status);
+                }
             }
+            })
+            //form 2
+            form2.submit((event)=>{
+                event.preventDefault();
+                var xhr2=new XMLHttpRequest();
+                xhr2.open('POST','/second',true);
+                xhr2.setRequestHeader('X-Rand-N',n.val());
+                xhr2.send(`n=${n}`);
+                xhr2.onload=()=>{
+                if (xhr2.status === 200) {
+                    console.log('XHR Text Array: '+xhr2.responseText);
+                    const data=xhr2.responseText;
+                    jsonStatham.text(data);
+                }
+                else{
+                    alert(xhr2.status);
+                }
+            }
+            });
+            //form3
+            form3.submit((event)=>{
+                event.preventDefault();
+                var xhr1=new XMLHttpRequest();
+                xhr1.open('POST','/first',false);
+                xhr1.setRequestHeader('x-value-x',x1.val());
+                xhr1.setRequestHeader('x-value-y',y1.val());
+                xhr1.send();
+                xhr1.onload=()=>{
+                    if (xhr1.status === 200) {
+                        console.log('XHR Text 1: '+xhr1.responseText);
+                        const data=xhr1.responseText;
+                        z1.val(data);
+                    }
+                    else{
+                        alert(xhr1.status);
+                    }
+                }
+                var xhr2=new XMLHttpRequest();
+                xhr2.open('POST','/second',false);
+                xhr2.setRequestHeader('X-Rand-N',n1.val());
+                xhr2.send();
+                xhr2.onload=()=>{
+                    if (xhr2.status === 200) {
+                        console.log('XHR Text 2: '+xhr2.responseText);
+                        const data=xhr2.responseText;
+                        jsonStatham1.text(data);
+                    }
+                    else{
+                        alert(xhr2.status);
+                    }
+                }
+            })
         </script>
     </body>
 </html>
