@@ -1,0 +1,3 @@
+﻿  main.cpp
+D:\Sem32\WebSecurity\BlockCypher\BlockCypher\main.cpp(8,11): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  BlockCypher.vcxproj -> D:\Sem32\WebSecurity\BlockCypher\x64\Debug\BlockCypher.exe
