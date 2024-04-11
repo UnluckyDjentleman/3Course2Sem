@@ -137,11 +137,13 @@ app.post('/login',async (req,res)=>{
 })
 app.get('/refresh-token', async (req,res)=>{
     if(req.cookies.refreshToken){
+        console.log('Token: '+req.cookies.refreshToken)
         let isTokenExist=await clientRedis.get(req.cookies.refreshToken);
         if(isTokenExist===null){
             jwt.verify(req.cookies.refreshToken,'refresh_token',async(err, payload)=>{
                 if(err) res.send(err.message);
                 else if(payload){
+                    await clientRedis.set(req.cookies.refreshToken, 'blocked')
                     const candidate=await users.findOne({
                         where:{
                             id: payload.id
@@ -151,26 +153,29 @@ app.get('/refresh-token', async (req,res)=>{
                     const refreshToken=generateRefreshToken(candidate);
                     res.cookie('accessToken',accessToken,{
                         httpOnly: true,
-                        sameSite: strict
+                        sameSite: 'strict'
                     })
                     res.cookie('refreshToken',refreshToken,{
                         httpOnly: true,
-                        sameSite: strict,
+                        sameSite: 'strict',
                         path:'/logout'
                     })
                     res.cookie('refreshToken',refreshToken,{
                         httpOnly: true,
-                        sameSite: strict,
+                        sameSite: 'strict',
                         path:'/refresh-token'
                     })
+                    console.log('New Refresh Token: '+refreshToken);
                     res.redirect('/resource')
                 }
-                res.status(401).send('<h2>ERROR 401:Invalid Token</h2>');
             })
         }
         else{
             return res.status(401).send('<h2>ERROR 401:Unathorized Access</h2>')
         }
+    }
+    else{
+        return res.status(401).send('<h2>ERROR 401:Invalid Token</h2>');
     }
 })
 app.get('/logout', async(req,res)=>{
